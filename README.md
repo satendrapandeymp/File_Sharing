@@ -1,5 +1,6 @@
 # File_Sharing
 
+# For Linux
 There are three version of this app uploaded so far.
 In V-1.0 You can share all files inside your share folder. For this you just have to activate virtualenv and run main.py.
 In V-1.1 You can share all of your Files inside Home folder {Only selective kind of file extension}. Just run main.py.
@@ -13,3 +14,10 @@ NOTE -- You have to set MySQL database to run  V-1.2, you can see a file at loca
 MySQL.
 
 Thanks
+
+# For Windows
+
+Go to V-1.0 or V-1.1 folder through Command prompt 
+then type ..\venv_win\Scripts\python.exe main.py 
+Now open the url in browser.
+You're Done now
