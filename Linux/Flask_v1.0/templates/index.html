@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Capacloud</title>
+	<script hrerf="/static/jquery.min.js"></script>
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/font-awesome.min.css" rel="stylesheet">
+        <style type="text/css">
+
+    			body {
+    			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#608f95+0,008588+9,0c2449+52,1a1e3b+100 */			padding-left: 1cm;
+			padding-top: 1cm;
+    			background: rgb(30,0,70); /* Old browsers */
+    			}
+
+        </style>
+    </head>
+    <body>
+                  {% for name in names%}
+			<a href="/{{name}}"> {{name}} </a> <br>
+		  {%endfor%}
+		 <br> <br> <br> <br>
+		<input type="text" name="" value="You can upload to computer through here" disabled="" id="train"  size="35"> <br /><br />
+		  <form action="/post" method="post" enctype="multipart/form-data" name="train">
+		      <input type="file" name="file[]" multiple=""><br />
+		      <input type="submit" value="upload">
+		</form>
+    </body>
+</html>

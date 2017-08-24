@@ -1,0 +1,20 @@
+mysql -u "root" -p
+***** (Fill your password -- Default password is empty so you can enter without typing anything)
+
+create database flask;
+
+use flask;
+
+CREATE TABLE auth (username VARCHAR(24), email VARCHAR(40),password VARCHAR(24),time TIME, is_admin binary, is_active binary);
+
+For creating new user-- 
+
+CREATE USER 'pandey'@'localhost' IDENTIFIED BY '  ';
+
+GRANT ALL ON flask.* TO 'pandey'@'localhost';
+
+flush privilages;
+
+To modify privilage of an user to Admin -- 
+UPDATE auth SET is_admin = 1 where username = "satendrapandeymp";
+

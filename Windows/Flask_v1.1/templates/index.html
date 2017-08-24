@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Big_File_Share</title>
+	<script hrerf="/static/jquery.min.js"></script>
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/font-awesome.min.css" rel="stylesheet">
+        <style type="text/css">
+
+    			   body { padding-left: 1cm; padding-top: 1cm; background: rgb(230,240,250);}
+             .upload {border: 1px solid red;
+                     position: absolute;
+                     top: 10px;
+                     right: 20px;
+                     width: 250px;
+                     height: 90px;
+                     }
+             .folder{ padding-top: 2cm;}
+            .img_div { float: left; width: 210px; height: 180px;}
+        </style>
+    </head>
+    <body>
+
+      <div class="upload">
+          <form action={{request.path}} method="post" enctype="multipart/form-data" name="train">
+              <input type="file" name="file[]" multiple="" > <br>
+              <input type="submit" value="upload">
+        </form>
+      </div>
+
+      <div class="folder">
+
+        {% for name in names%}
+          {% if filetype[loop.index-1] == 0 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/folder.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+          {% if filetype[loop.index-1] == 1 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/image.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+          {% if filetype[loop.index-1] == 2 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/song.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+          {% if filetype[loop.index-1] == 3 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/video.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+          {% if filetype[loop.index-1] == 4 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/pdf.png" alt="Folder">  <figcaption>{{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+          {% if filetype[loop.index-1] == 5 %}
+          <div class="img_div">
+              <a href="/{{name}}"> <img src="/static/doc.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+          </div>
+          {% endif %}
+        {%endfor%}
+
+      </div>
+
+    </body>
+</html>
