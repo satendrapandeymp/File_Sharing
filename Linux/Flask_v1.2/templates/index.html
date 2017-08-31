@@ -23,7 +23,7 @@
                      top: 20px;
                      right: 40px;
                      }
-		
+
 		.upload2 {border: 1px solid red;
                      position: absolute;
                      top: 60px;
@@ -31,7 +31,7 @@
                      }
 
              .folder{ padding-top: 80px;}
-            .img_div { float: left; width: 190px; height: 180px;}
+            .img_div { float: left; width: 228px; height: 210px;}
         </style>
     </head>
     <body>
@@ -62,22 +62,28 @@
           {% endif %}
           {% if filetype[loop.index-1] == 1 %}
           <div class="img_div">
-              <a href="{{name}}"> <img src="/static/image.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+              <a href="{{name}}"> <img src="{{name}}" height="160" width="210" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
           </div>
           {% endif %}
           {% if filetype[loop.index-1] == 2 %}
           <div class="img_div">
               <a href="{{name}}"> <img src="/static/song.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+              <audio src="{{name}}" style="width: 160px;" controls> test </audio>
           </div>
           {% endif %}
           {% if filetype[loop.index-1] == 3 %}
           <div class="img_div">
-              <a href="{{name}}"> <img src="/static/video.png" alt="Folder">  <figcaption> {{folder_name[loop.index-1]}}</figcaption> </a>
+            <video width="205" height="190" controls>
+            <source src="{{name}}" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
           </div>
           {% endif %}
           {% if filetype[loop.index-1] == 4 %}
           <div class="img_div">
               <a href="{{name}}"> <img src="/static/pdf.png" alt="Folder">  <figcaption>{{folder_name[loop.index-1]}}</figcaption> </a>
+              <input type="text" name="" value="" id="{{name}}" style="height: 10px; width: 100px;">
+              <input type="button" value="PLAY"  onclick="play('{{name}}')">
           </div>
           {% endif %}
           {% if filetype[loop.index-1] == 5 %}
@@ -86,6 +92,28 @@
           </div>
           {% endif %}
         {%endfor%}
+
+       <audio id="audio" src="/home/pknknandey/Music/NIKAH = CHUPKE CHUPKE RAAT DIN.mp3" hidden="true"></audio>
+       <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+       <script>
+        function play(name){
+            val = document.getElementById(name).value;
+            $.ajax({
+                      type: "POST",
+                      url: "/pdf",
+                      data: {'name': name, 'page':val},
+                      dataType: "text",
+                      success: function(response) {
+                          var answer = response.answer;
+                          console.log(answer);
+                          var audio = document.getElementById("audio");
+                          audio.src = "/static/temp/" + val + ".mp3";
+                          audio.play();
+                      }
+                    });
+            }
+       </script>
+
 
       </div>
 
